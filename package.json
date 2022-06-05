@@ -1,0 +1,40 @@
+{
+  "name": "backend-my-dates",
+  "version": "0.1.0",
+  "description": "Backend realizado para la aplicación web \"myDates\" que será desarrollada para el curso de Calidad de Software",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test jest --verbose --runInBand",
+    "start": "NODE_ENV=production node index.js",
+    "dev": "NODE_ENV=production nodemon index.js",
+    "lint": "eslint .",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashel1806/backend-my-dates.git"
+  },
+  "keywords": [
+    "API",
+    "backend",
+    "myDates"
+  ],
+  "author": "Grupo 6",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashel1806/backend-my-dates/issues"
+  },
+  "homepage": "https://github.com/ashel1806/backend-my-dates#readme",
+  "devDependencies": {
+    "eslint": "^8.16.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.0",
+    "nodemon": "^2.0.16",
+    "supertest": "^6.2.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.5"
+  }
+}
