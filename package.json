@@ -6,7 +6,7 @@
   "scripts": {
     "test": "NODE_ENV=test jest --verbose --runInBand",
     "start": "NODE_ENV=production node index.js",
-    "dev": "NODE_ENV=development nodemon index.js",
+    "dev": "NODE_ENV=development --exec babel-node nodemon index.js",
     "lint": "eslint .",
     "prepare": "husky install"
   },
@@ -26,6 +26,9 @@
   },
   "homepage": "https://github.com/ashel1806/backend-my-dates#readme",
   "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
     "eslint": "^8.17.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
