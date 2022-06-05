@@ -2,11 +2,13 @@
   "name": "back-my-dates",
   "version": "0.1.0",
   "description": "Backend realizado para la aplicación web \"myDates\" que será desarrollada para el curso de Calidad de Software",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
+    "build": "babel src -d dist",
     "test": "NODE_ENV=test jest --verbose --runInBand",
-    "start": "NODE_ENV=production node index.js",
-    "dev": "NODE_ENV=development --exec babel-node nodemon index.js",
+    "start": "NODE_ENV=production npm run build && node dist/index.js",
+    "dev": "NODE_ENV=development npm run build && nodemon dist/index.js",
+    "serve": "node dist/index.js",
     "lint": "eslint .",
     "prepare": "husky install"
   },
@@ -28,6 +30,7 @@
   "devDependencies": {
     "@babel/cli": "^7.17.10",
     "@babel/core": "^7.18.2",
+    "@babel/node": "^7.17.10",
     "@babel/preset-env": "^7.18.2",
     "eslint": "^8.17.0",
     "eslint-config-airbnb-base": "^15.0.0",

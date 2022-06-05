@@ -1,7 +1,9 @@
-const express = require('express');
-const mongoose = require('mongoose');
+import express from 'express';
+import mongoose from 'mongoose';
 
-const config = require('./config/config');
+import config from './config/config.js';
+
+import User from './api/routes/user.route.js';
 
 const app = express();
 
@@ -16,8 +18,7 @@ mongoose.connect(config.MONGODB_URI)
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+app.use('/api/v1/auth/register', User);
+app.use('/ping', (req, res) => res.send('pong!'));
 
-module.exports = app;
+export default app;

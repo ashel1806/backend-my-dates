@@ -1,4 +1,4 @@
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -9,4 +9,4 @@ if (process.env.NODE_ENV === 'test') {
   MONGODB_URI = process.env.MONGODB_TEST_URI || '';
 }
 
-module.exports = { MONGODB_URI, PORT };
+export default { MONGODB_URI, PORT };

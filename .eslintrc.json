@@ -18,6 +18,9 @@
     "semi": ["error"],
     "indent": ["error", 2],
     "quotes": ["error", "single"],
-    "no-console": "off"
+    "no-console": "off",
+    "no-underscore-dangle": ["error", {
+      "enforceMethodNames": true
+    }]
   }
 }
