@@ -9,15 +9,16 @@ const schema = new mongoose.Schema({
   },
   lastName: {
     type: String,
-    minlength: [4, 'El apellido debe contener más de 4 caracteres'],
+    minlength: [3, 'El apellido debe contener más de 3 caracteres'],
     required: false,
     trim: true,
   },
   email: {
     type: String,
+    unique: [true, 'Este correo ya ha sido utilizado'],
     required: [true, 'Este campo es obligatorio'],
     trim: true,
-    match: ['/.+\\@.+\\.+/', 'Debe ingresar un correo válido'],
+    match: [/^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/, 'Debe ingresar un correo válido'],
   },
   country: {
     type: String,

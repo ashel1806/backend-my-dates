@@ -2,7 +2,8 @@
   "env": {
     "node": true,
     "commonjs": true,
-    "es2021": true
+    "es2021": true,
+    "jest": true
   },
   "extends": [
     "airbnb-base"
@@ -19,8 +20,7 @@
     "indent": ["error", 2],
     "quotes": ["error", "single"],
     "no-console": "off",
-    "no-underscore-dangle": ["error", {
-      "enforceMethodNames": true
-    }]
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "off"
   }
 }
