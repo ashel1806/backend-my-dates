@@ -1,11 +1,11 @@
 {
-  "name": "backend-my-dates",
+  "name": "back-my-dates",
   "version": "0.1.0",
   "description": "Backend realizado para la aplicación web \"myDates\" que será desarrollada para el curso de Calidad de Software",
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test jest --verbose --runInBand",
-    "start": "NODE_ENV=production node index.js",
+    "start": "node index.js",
     "dev": "NODE_ENV=production nodemon index.js",
     "lint": "eslint .",
     "prepare": "husky install"
