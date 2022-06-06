@@ -1,10 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
-import morgan from 'morgan';
 
 import config from './config/config';
+import logger from './middlewares/logger';
 
 import User from './api/routes/user.route';
+import requestLogger from './middlewares/requestLogger';
+import unknownEndpoint from './middlewares/unknownEndpoint';
+import errorHandler from './middlewares/errorHandler';
 
 const app = express();
 
@@ -12,9 +15,9 @@ const connectDB = async () => {
   try {
     await mongoose.connect(config.MONGODB_URI);
 
-    console.log('MongoDB connected succesfully');
+    logger.info('MongoDB connected succesfully');
   } catch (error) {
-    console.log('Some error has ocurred: ', error.message);
+    logger.error('Some error has ocurred: ', error.message);
   }
 };
 
@@ -22,12 +25,12 @@ connectDB();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(morgan(':method :url :status :response-time ms - :body', {
-  // eslint-disable-next-line no-unused-vars
-  skip: (req, res) => process.env.NODE_ENV === 'test',
-}));
+app.use(requestLogger);
 
 app.use('/api/v1/auth/register', User);
 app.use('/ping', (req, res) => res.send('pong!'));
+
+app.use(unknownEndpoint);
+app.use(errorHandler);
 
 export default app;
