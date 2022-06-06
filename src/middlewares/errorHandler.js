@@ -19,7 +19,7 @@ const handleDuplicateKeyError = (err, res) => {
   const code = 409;
   const errorMessage = `Una cuenta con este ${field} ya existe.`;
 
-  res.status(code).json({ message: errorMessage, fields: field });
+  res.status(code).json({ messages: errorMessage, fields: field });
 };
 
 // eslint-disable-next-line consistent-return
@@ -35,12 +35,12 @@ const errorHandler = (error, req, res, next) => {
       return res.status(401).json({ error: 'invalid token' });
     } else if (error.message === 'invalidUser') {
       return res.status(400).send({
-        message: 'Usuario no encontrado',
+        messages: 'Usuario no encontrado',
         fields: ['email'],
       });
     } else if (error.message === 'invalidPassword') {
       return res.status(400).send({
-        message: 'La contraseña es inválida',
+        messages: 'La contraseña es inválida',
         fields: ['password'],
       });
     }
