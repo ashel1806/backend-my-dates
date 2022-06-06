@@ -14,15 +14,11 @@ export default class LoginController {
         : await bcrypt.compare(password, user.password);
 
       if (!user) {
-        return res.status(401).json({
-          error: 'Usuario no encontrado',
-        });
+        throw new Error('invalidUser');
       }
 
       if (!passwordCorrect) {
-        return res.status(401).json({
-          error: 'Contraseña Incorrecta',
-        });
+        throw new Error('invalidPassword');
       }
 
       res.status(200).send({

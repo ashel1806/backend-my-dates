@@ -33,6 +33,16 @@ const errorHandler = (error, req, res, next) => {
       return handleDuplicateKeyError(error, res);
     } else if (error.name === 'JsonWebTokenError') {
       return res.status(401).json({ error: 'invalid token' });
+    } else if (error.message === 'invalidUser') {
+      return res.status(400).send({
+        message: 'Usuario no encontrado',
+        fields: ['email'],
+      });
+    } else if (error.message === 'invalidPassword') {
+      return res.status(400).send({
+        message: 'La contraseña es inválida',
+        fields: ['password'],
+      });
     }
   // eslint-disable-next-line no-shadow
   } catch (error) {
