@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 const schema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'Este campo es obligatorio'],
+    required: [true, 'Debes ingresar un nombre'],
     minlength: [3, 'El nombre debe contener más de 3 caracteres'],
     trim: true,
   },
@@ -18,7 +18,7 @@ const schema = new mongoose.Schema({
   email: {
     type: String,
     unique: [true, 'Este correo ya ha sido utilizado'],
-    required: [true, 'Este campo es obligatorio'],
+    required: [true, 'Debes ingresar un correo'],
     trim: true,
     lowercase: true,
     match: [/^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/, 'Debe ingresar un correo válido'],
