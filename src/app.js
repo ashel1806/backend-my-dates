@@ -3,16 +3,15 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 
 // config
-import config from './config/config';
+import { config } from './config';
 
 // routes
-import User from './api/routes/user.route';
+import { User } from './api/routes';
 
 // middlewares
-import logger from './middlewares/logger';
-import requestLogger from './middlewares/requestLogger';
-import unknownEndpoint from './middlewares/unknownEndpoint';
-import errorHandler from './middlewares/errorHandler';
+import {
+  logger, requestLogger, unknownEndpoint, errorHandler,
+} from './middlewares';
 
 const app = express();
 
