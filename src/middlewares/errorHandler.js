@@ -6,7 +6,7 @@ const handleValidationError = (err, res) => {
   const code = 400;
 
   if (errors.length > 1) {
-    const formattedErrors = errors.join(' ');
+    const formattedErrors = errors.join('-');
 
     res.status(code).json({ messages: formattedErrors, fields });
   } else {
