@@ -41,7 +41,7 @@ const schema = new mongoose.Schema({
   },
   country: {
     type: String,
-    required: true,
+    required: [true, 'Debes seleccionar un país'],
   },
 });
 
