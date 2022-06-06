@@ -1,6 +1,7 @@
 import supertest from 'supertest';
 import mongoose from 'mongoose';
 import app from '../src/app';
+import User from '../src/models/User';
 
 const api = supertest(app);
 
@@ -19,12 +20,17 @@ describe('Sanity test', () => {
 });
 
 describe('POST /api/v1/auth/register', () => {
+  beforeEach(async () => {
+    await User.deleteMany({});
+  });
+
   test('Should return 201 status code', async () => {
     const user = {
       name: 'Jhon',
       lastName: 'Doe',
       email: 'jhon.doe@gmail.com',
       country: 'Chile',
+      password: 'aleman234',
     };
 
     await api

@@ -22,7 +22,7 @@ connectDB();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(morgan('dev', {
+app.use(morgan(':method :url :status :response-time ms - :body', {
   // eslint-disable-next-line no-unused-vars
   skip: (req, res) => process.env.NODE_ENV === 'test',
 }));

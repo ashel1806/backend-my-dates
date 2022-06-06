@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "babel src -d dist",
-    "test": "jest",
+    "test": "NODE_ENV=test jest --verbose --runInBand",
     "start": "NODE_ENV=production npm run build && node dist/index.js",
     "dev": "NODE_ENV=development npm run build && nodemon dist/index.js",
     "serve": "node dist/index.js",
@@ -41,6 +41,7 @@
     "supertest": "^6.2.3"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongoose": "^6.3.5",

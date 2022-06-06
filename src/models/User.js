@@ -20,6 +20,7 @@ const schema = new mongoose.Schema({
     trim: true,
     match: [/^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/, 'Debe ingresar un correo válido'],
   },
+  passwordHash: String,
   country: {
     type: String,
     required: true,

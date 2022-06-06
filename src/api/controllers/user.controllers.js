@@ -1,10 +1,14 @@
+import bcrypt from 'bcrypt';
 import User from '../../models/User';
 
 export default class UserController {
   static async apiPostUser(req, res) {
     const {
-      name, lastName, email, country,
+      name, lastName, email, country, password,
     } = req.body;
+
+    const saltRounds = 10;
+    const passwordHash = await bcrypt.hash(password, saltRounds);
 
     try {
       const user = new User({
@@ -12,6 +16,7 @@ export default class UserController {
         lastName,
         email,
         country,
+        passwordHash,
       });
 
       const savedUser = await user.save();
