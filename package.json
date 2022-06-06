@@ -9,6 +9,8 @@
     "start": "NODE_ENV=production npm run build && node dist/index.js",
     "dev": "NODE_ENV=development npm run build && nodemon dist/index.js",
     "serve": "node dist/index.js",
+    "heroku-prebuild": "",
+    "heroku-postbuild": "babel-node src",
     "lint": "eslint .",
     "prepare": "husky install"
   },
