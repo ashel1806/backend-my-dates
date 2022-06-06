@@ -31,6 +31,7 @@ describe('POST /api/v1/auth/register', () => {
       email: 'jhon.doe@gmail.com',
       country: 'Chile',
       password: 'aleman234',
+      passwordConfirm: 'aleman234',
     };
 
     await api
@@ -38,6 +39,24 @@ describe('POST /api/v1/auth/register', () => {
       .send(user)
       .expect(201)
       .expect('Content-Type', /json/);
+  });
+
+  test('Should return an error if passwords doesn´t match', async () => {
+    const user = {
+      name: 'Jhon',
+      lastName: 'Doe',
+      email: 'jhon.doe@gmail.com',
+      country: 'Chile',
+      password: 'aleman234',
+      passwordConfirm: 'notMatchPassword',
+    };
+
+    const res = await api
+      .post('/api/v1/auth/register')
+      .send(user);
+
+    expect(res.status).toEqual(400);
+    expect(res.error.text).toContain('Las contraseñas no coinciden');
   });
 });
 
