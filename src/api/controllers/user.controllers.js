@@ -1,19 +1,18 @@
-import User from '../../models/User';
+import { User } from '../../models';
 
 export default class UserController {
   static async apiPostUser(req, res, next) {
-    const {
-      name, lastName, email, country, password, passwordConfirm,
-    } = req.body;
+    const { body } = req;
 
     try {
       const user = new User({
-        name,
-        lastName,
-        email,
-        country,
-        password,
-        passwordConfirm,
+        name: body.name,
+        lastName: body.lastName,
+        email: body.email,
+        country: body.country,
+        password: body.password,
+        passwordConfirm: body.passwordConfirm,
+        avatar: body.avatar,
       });
 
       const savedUser = await user.save();

@@ -43,6 +43,16 @@ const schema = new mongoose.Schema({
     type: String,
     required: [true, 'Debes seleccionar un país'],
   },
+  sites: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Sites',
+    },
+  ],
+  avatar: {
+    type: String,
+    default: 'https://res.cloudinary.com/ashel-root/image/upload/v1642319099/Profesores/default_fvdimb.jpg',
+  },
 });
 
 schema.pre('save', async function (next) {
