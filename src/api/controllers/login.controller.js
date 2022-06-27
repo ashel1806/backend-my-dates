@@ -13,7 +13,7 @@ const client = new OAuth2Client(
 export default class LoginController {
   // eslint-disable-next-line consistent-return
   static async apiLoginUser(req, res, next) {
-    const { email, password, name } = req.body;
+    const { email, password } = req.body;
 
     try {
       const user = await User.findOne({ email });
@@ -32,13 +32,13 @@ export default class LoginController {
 
       const userForToken = {
         email,
-        name,
+        name: user.name,
         id: user._id,
       };
 
       const token = jwt.sign(userForToken, process.env.SECRET);
 
-      res.status(200).send({
+      return res.status(200).send({
         status: 'success',
         token,
         data: user,

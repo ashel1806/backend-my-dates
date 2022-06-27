@@ -1,6 +1,7 @@
 import { User } from '../../models';
 
 export default class UserController {
+  // eslint-disable-next-line consistent-return
   static async apiPostUser(req, res, next) {
     const { body } = req;
 
@@ -17,7 +18,10 @@ export default class UserController {
 
       const savedUser = await user.save();
 
-      res.status(201).json({ status: 'success', user: savedUser });
+      return res.status(201).send({
+        status: 'success',
+        user: savedUser,
+      });
     } catch (error) {
       next(error);
     }
