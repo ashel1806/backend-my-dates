@@ -6,7 +6,7 @@ import cors from 'cors';
 import { config } from './config';
 
 // routes
-import { User, Login } from './api/routes';
+import { User, Login, Place } from './api/routes';
 
 // middlewares
 import {
@@ -32,6 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(requestLogger);
 
+app.use('/api/v1/places', Place);
 app.use('/api/v1/auth/register', User);
 app.use('/api/v1/auth/login', Login);
 app.use('/ping', (req, res) => res.send('pong!'));
