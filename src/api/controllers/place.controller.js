@@ -2,7 +2,7 @@
 import { Place } from '../../models';
 
 export default class PlaceController {
-  static async apiGetPlaces(req, res, next) {
+  static async apiGetAllPlaces(req, res, next) {
     try {
       const places = await Place.find({});
 
