@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-import { Place } from '../../models';
+import Place from './place';
 
 export default class PlaceController {
   static async apiGetAllPlaces(req, res, next) {

@@ -1,4 +1,4 @@
-import { User } from '../../models';
+import User from './user';
 
 export default class UserController {
   // eslint-disable-next-line consistent-return

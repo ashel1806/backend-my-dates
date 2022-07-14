@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { PlaceCtrl } from '../controllers';
+import PlaceCtrl from './place.controller';
 
 const router = new Router();
 

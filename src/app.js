@@ -6,7 +6,9 @@ import cors from 'cors';
 import { config } from './config';
 
 // routes
-import { User, Login, Place } from './api/routes';
+import { UserRoute } from './api/User';
+import { LoginRoute } from './api/Login';
+import { PlaceRoute } from './api/Place';
 
 // middlewares
 import {
@@ -32,9 +34,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(requestLogger);
 
-app.use('/api/v1/places', Place);
-app.use('/api/v1/auth/register', User);
-app.use('/api/v1/auth/login', Login);
+app.use('/api/v1/places', PlaceRoute);
+app.use('/api/v1/auth/register', UserRoute);
+app.use('/api/v1/auth/login', LoginRoute);
 app.use('/ping', (req, res) => res.send('pong!'));
 app.use('/', (req, res) => res.send('Hi!'));
 

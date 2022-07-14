@@ -91,7 +91,7 @@ module.exports = {
   // moduleNameMapper: {},
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-  // modulePathIgnorePatterns: [],
+  modulePathIgnorePatterns: ["<rootDir>/dist/api/"],
 
   // Activates notifications for test results
   // notify: false,
@@ -178,7 +178,7 @@ module.exports = {
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
   //   "/node_modules/",
-  //   "\\.pnp\\.[^\\/]+$"
+  //   "src\/api\/.*\/.*\.test.js$",
   // ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them

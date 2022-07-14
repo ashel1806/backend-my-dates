@@ -1,8 +1,14 @@
+import mongoose from 'mongoose';
 import supertest from 'supertest';
-import app from '../src/app';
-import User from '../src/models/User';
+
+import app from '../../app';
+import User from '../User/user';
 
 const api = supertest(app);
+
+beforeAll((done) => {
+  done();
+});
 
 describe('POST /api/v1/auth/login', () => {
   beforeEach(async () => {
@@ -32,4 +38,9 @@ describe('POST /api/v1/auth/login', () => {
       .expect(200)
       .expect('Content-Type', /json/);
   });
+});
+
+afterAll((done) => {
+  mongoose.connection.close();
+  done();
 });
