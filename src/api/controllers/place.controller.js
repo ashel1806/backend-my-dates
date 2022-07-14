@@ -16,10 +16,10 @@ export default class PlaceController {
   }
 
   static async apiPostPlaces(req, res, next) {
-    const { places } = req.body;
+    const { formattedPlaces } = req.body;
 
     try {
-      Place.bulkWrite(places.map((place) => ({
+      Place.bulkWrite(formattedPlaces.map((place) => ({
         insertOne: {
           document: place,
         },
