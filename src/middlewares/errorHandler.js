@@ -40,7 +40,7 @@ const errorHandler = (error, req, res, next) => {
       });
     } else if (error.message === 'invalidPassword') {
       return res.status(400).send({
-        messages: 'La contraseña es inválida',
+        messages: 'La contraseña es incorrecta',
         fields: ['password'],
       });
     }
