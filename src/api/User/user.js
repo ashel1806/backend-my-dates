@@ -1,8 +1,8 @@
 /* eslint-disable func-names */
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 import bcrypt from 'bcrypt';
 
-const schema = new mongoose.Schema({
+const schema = new Schema({
   name: {
     type: String,
     required: [true, 'Debes ingresar un nombre'],
@@ -45,13 +45,18 @@ const schema = new mongoose.Schema({
   },
   sites: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: 'Sites',
     },
   ],
   avatar: {
     type: String,
     default: 'https://res.cloudinary.com/ashel-root/image/upload/v1642319099/Profesores/default_fvdimb.jpg',
+  },
+  favorites: {
+    type: [Schema.Types.ObjectId],
+    ref: 'Favs',
+    default: [],
   },
 });
 
@@ -70,6 +75,6 @@ schema.set('toJSON', {
   },
 });
 
-const User = mongoose.model('User', schema);
+const User = model('User', schema);
 
 export default User;

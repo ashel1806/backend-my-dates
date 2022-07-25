@@ -1,0 +1,68 @@
+/* eslint-disable consistent-return */
+import Favs from './favorites';
+import { User } from '../User';
+
+export default class FavsController {
+  static async apiGetAllFavs(req, res, next) {
+    try {
+      const favs = await Favs.find({});
+
+      return res.status(200).send({
+        status: 'success',
+        data: favs,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async apiPostFav(req, res, next) {
+    const { placeInfo, userId } = req.body;
+
+    try {
+      const user = await User.findById(userId);
+
+      const newFav = new Favs({
+        place_info: placeInfo,
+        user_id: user.id,
+      });
+
+      const savedFav = await newFav.save();
+
+      await User.findByIdAndUpdate(userId, {
+        $push: {
+          favorites: savedFav._id,
+        },
+      });
+
+      return res.status(201).send({
+        status: 'success',
+        data: savedFav,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async apiDeleteFav(req, res, next) {
+    const { favoriteId } = req.params;
+
+    try {
+      const fav = await Favs.findById(favoriteId);
+
+      await Favs.findByIdAndDelete(favoriteId);
+
+      await User.findByIdAndUpdate(fav.user_id, {
+        $pull: {
+          favorites: favoriteId,
+        },
+      });
+
+      return res.status(204).send({
+        status: 'success',
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+}

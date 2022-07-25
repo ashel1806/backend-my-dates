@@ -9,6 +9,7 @@ import { config } from './config';
 import { UserRoute } from './api/User';
 import { LoginRoute } from './api/Login';
 import { PlaceRoute } from './api/Place';
+import { FavoritesRoute } from './api/Favorites';
 
 // middlewares
 import {
@@ -34,6 +35,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(requestLogger);
 
+app.use('/api/v1/favorites', FavoritesRoute);
 app.use('/api/v1/places', PlaceRoute);
 app.use('/api/v1/auth/register', UserRoute);
 app.use('/api/v1/auth/login', LoginRoute);
