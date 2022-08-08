@@ -29,10 +29,12 @@ export default class UserController {
   }
 
   static async apiUpdateUser(req, res, next) {
-    const { body, params: { userId } } = req;
+    const { userId } = req.params;
+    const { body } = req;
 
     try {
       let imageInfo;
+      console.log(req.file);
       if (req.file) {
         imageInfo = await cloudinary.uploader.upload(req.file.path);
       }
@@ -56,6 +58,7 @@ export default class UserController {
         data: updatedUser,
       });
     } catch (error) {
+      res.send(error);
       next(error);
     }
   }
