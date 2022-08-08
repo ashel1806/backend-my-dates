@@ -43,10 +43,10 @@ const schema = new Schema({
     type: String,
     required: [true, 'Debes seleccionar un país'],
   },
-  sites: [
+  dates: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Sites',
+      ref: 'Date',
     },
   ],
   avatar: {
