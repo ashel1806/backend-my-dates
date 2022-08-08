@@ -1,11 +1,15 @@
+/* eslint-disable camelcase */
 /* eslint-disable consistent-return */
 import axios from 'axios';
+
+const GOOGLE_URL = 'https://maps.googleapis.com/maps/api/place';
+const { GOOGLE_API_KEY } = process.env;
 
 export default class PlaceController {
   static async apiGetPlaceInfo(req, res, next) {
     try {
       const { placeId } = req.query;
-      const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${process.env.GOOGLE_API_KEY}`;
+      const url = `${GOOGLE_URL}/details/json?place_id=${placeId}&key=${GOOGLE_API_KEY}`;
 
       const response = await axios.get(url);
       const { result: place } = response.data;
