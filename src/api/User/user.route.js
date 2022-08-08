@@ -6,8 +6,6 @@ const router = new Router();
 
 router.route('/').post(UserCtrl.apiPostUser);
 
-router.use(upload.single('image'));
-
-router.route('/:userId').put(UserCtrl.apiUpdateUser);
+router.put('/:userId', upload.single('image'), UserCtrl.apiUpdateUser);
 
 export default router;

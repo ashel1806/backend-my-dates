@@ -9,4 +9,4 @@ cloudinary.config({
   api_secret: 'JKoLjkfx8O9eLrqwIWj8rJssBk0',
 });
 
-export default cloudinary;
+export default cloudinary.v2;

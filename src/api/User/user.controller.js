@@ -33,8 +33,8 @@ export default class UserController {
     const { body } = req;
 
     try {
+      console.log(body);
       let imageInfo;
-      console.log(req.file);
       if (req.file) {
         imageInfo = await cloudinary.uploader.upload(req.file.path);
       }
