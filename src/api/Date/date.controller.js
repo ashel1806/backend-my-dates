@@ -69,4 +69,26 @@ export default class DateController {
       next(error);
     }
   }
+
+  static async apiDeleteDate(req, res, next) {
+    const { dateId } = req.params;
+
+    try {
+      const date = await Date.findById(dateId);
+
+      await Date.findByIdAndDelete(dateId);
+
+      await User.findByIdAndUpdate(date.user_id, {
+        $pull: {
+          dates: dateId,
+        },
+      });
+
+      return res.status(204).send({
+        status: 'success',
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
 }
