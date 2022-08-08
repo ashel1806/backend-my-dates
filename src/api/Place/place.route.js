@@ -3,7 +3,6 @@ import PlaceCtrl from './place.controller';
 
 const router = new Router();
 
-router.route('/').get(PlaceCtrl.apiGetAllPlaces);
-router.route('/').post(PlaceCtrl.apiPostPlaces);
+router.route('/').get(PlaceCtrl.apiGetPlaceInfo);
 
 export default router;

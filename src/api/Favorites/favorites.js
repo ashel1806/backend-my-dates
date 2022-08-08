@@ -1,12 +1,31 @@
 import { Schema, model } from 'mongoose';
-import { Place } from '../Place';
 
 const schema = new Schema({
-  place_info: Place.schema,
-  user_id: {
-    type: Schema.Types.ObjectId,
-    required: true,
-  },
+  place_id: String,
+  name: String,
+  latitude: Number,
+  phone_number: String,
+  longitude: Number,
+  reviews: [
+    {
+      author_name: String,
+      profile_photo_url: String,
+      rating: Number,
+      relative_time_description: String,
+      text: String,
+    },
+  ],
+  photos: [
+    {
+      height: Number,
+      width: Number,
+      reference: String,
+    },
+  ],
+  rating: Number,
+  url_google_maps: String,
+  website: String,
+  address: String,
 });
 
 schema.set('toJSON', {

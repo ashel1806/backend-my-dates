@@ -36,7 +36,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(requestLogger);
 
 app.use('/api/v1/favorites', FavoritesRoute);
-app.use('/api/v1/places', PlaceRoute);
+app.use('/api/v1/placeinfo', PlaceRoute);
 app.use('/api/v1/auth/register', UserRoute);
 app.use('/api/v1/auth/login', LoginRoute);
 app.use('/ping', (req, res) => res.send('pong!'));

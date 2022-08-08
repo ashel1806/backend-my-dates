@@ -1,32 +1,19 @@
 /* eslint-disable consistent-return */
-import Place from './place';
+import axios from 'axios';
 
 export default class PlaceController {
-  static async apiGetAllPlaces(req, res, next) {
+  static async apiGetPlaceInfo(req, res, next) {
     try {
-      const places = await Place.find({});
+      const { placeId } = req.query;
+      const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&key=${process.env.GOOGLE_API_KEY}`;
+
+      const place = await axios.get(url);
+
+      // console.log(placeData.data);
 
       return res.status(200).send({
         status: 'success',
-        data: places,
-      });
-    } catch (error) {
-      next(error);
-    }
-  }
-
-  static async apiPostPlaces(req, res, next) {
-    const { formattedPlaces } = req.body;
-
-    try {
-      Place.bulkWrite(formattedPlaces.map((place) => ({
-        insertOne: {
-          document: place,
-        },
-      })));
-
-      return res.status(201).send({
-        status: 'success',
+        data: place.data,
       });
     } catch (error) {
       next(error);

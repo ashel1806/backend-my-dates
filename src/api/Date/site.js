@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
 
-const schema = new mongoose.Schema({
+const schema = new Schema({
   user_id: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'User',
   },
   category: {
@@ -23,22 +23,7 @@ const schema = new mongoose.Schema({
       },
     },
   ],
-  location: {
-    type: {
-      type: String,
-      enum: ['Point'],
-      required: true,
-    },
-    coordinates: {
-      type: [Number],
-      required: true,
-    },
-  },
-  rate: Number,
-  description: String,
-  banner: String,
-  images: [String],
-  is_favorite: Boolean,
+  place_id: String,
 });
 
 schema.set('toJSON', {
@@ -49,6 +34,6 @@ schema.set('toJSON', {
   },
 });
 
-const Site = mongoose.model('Site', schema);
+const Date = model('Date', schema);
 
-export default Site;
+export default Date;

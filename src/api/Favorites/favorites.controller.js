@@ -1,4 +1,6 @@
 /* eslint-disable consistent-return */
+/* eslint-disable camelcase */
+
 import Favs from './favorites';
 import { User } from '../User';
 
@@ -17,13 +19,13 @@ export default class FavsController {
   }
 
   static async apiPostFav(req, res, next) {
-    const { placeInfo, userId } = req.body;
+    const { place, userId } = req.body;
 
     try {
       const user = await User.findById(userId);
 
       const newFav = new Favs({
-        place_info: placeInfo,
+        ...place,
         user_id: user.id,
       });
 
