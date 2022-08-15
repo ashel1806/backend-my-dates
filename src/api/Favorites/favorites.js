@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 
 const schema = new Schema({
-  place_id: String,
+  place: String,
   name: String,
   latitude: Number,
   phone_number: String,
@@ -9,17 +9,21 @@ const schema = new Schema({
   reviews: [
     {
       author_name: String,
+      author_url: String,
+      language: String,
       profile_photo_url: String,
       rating: Number,
       relative_time_description: String,
       text: String,
+      time: Number,
     },
   ],
   photos: [
     {
       height: Number,
       width: Number,
-      reference: String,
+      photo_reference: String,
+      html_attributions: [String],
     },
   ],
   rating: Number,
