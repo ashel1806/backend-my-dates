@@ -38,17 +38,4 @@ export default class PlaceController {
       next(error);
     }
   }
-
-  static async apiGetPlaces(req, res, next) {
-    try {
-      const places = await Place.find({});
-
-      return res.status(200).send({
-        status: 'success',
-        data: places,
-      });
-    } catch (error) {
-      next(error);
-    }
-  }
 }
