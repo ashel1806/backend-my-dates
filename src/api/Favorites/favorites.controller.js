@@ -20,6 +20,19 @@ export default class FavsController {
     }
   }
 
+  static async apiGetfavs(req, res, next) {
+    try {
+      const favs = await Favs.find({});
+
+      return res.status(200).send({
+        status: 'success',
+        data: favs,
+      });
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async apiPostFav(req, res, next) {
     const { place, userId } = req.body;
 
