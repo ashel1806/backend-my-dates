@@ -3,7 +3,7 @@ import FavsCtrl from './favorites.controller';
 
 const router = new Router();
 
-router.route('/').get(FavsCtrl.apiGetAllFavs);
+router.route('/:userId').get(FavsCtrl.apiGetAllFavs);
 router.route('/').post(FavsCtrl.apiPostFav);
 router.route('/:favoriteId').delete(FavsCtrl.apiDeleteFav);
 

@@ -6,8 +6,10 @@ import { User } from '../User';
 
 export default class FavsController {
   static async apiGetAllFavs(req, res, next) {
+    const { userId } = req.params;
     try {
-      const favs = await Favs.find({});
+      const favs = await User.find({ _id: userId }).populate('favorites');
+      console.log(favs);
 
       return res.status(200).send({
         status: 'success',
