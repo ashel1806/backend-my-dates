@@ -47,18 +47,18 @@ export default class FavsController {
   }
 
   static async apiDeleteFav(req, res, next) {
-    const { favoriteId } = req.params;
+    const { favoritePlaceId } = req.params;
 
     try {
-      const fav = await Favs.findById(favoriteId);
-
-      await Favs.findByIdAndDelete(favoriteId);
+      const fav = await Favs.findOne({ place_id: favoritePlaceId });
 
       await User.findByIdAndUpdate(fav.user_id, {
         $pull: {
-          favorites: favoriteId,
+          favorites: fav._id,
         },
       });
+
+      await Favs.findByIdAndDelete(fav._id);
 
       return res.status(204).send({
         status: 'success',
