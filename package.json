@@ -5,9 +5,9 @@
   "main": "src/index.js",
   "scripts": {
     "build": "rm -rf dist && babel src -d dist",
-    "test": "NODE_ENV=test jest --verbose --runInBand",
-    "start": "NODE_ENV=production node dist/index.js",
-    "dev": "NODE_ENV=development npm run build && nodemon dist/index.js",
+    "test": "SET NODE_ENV=test jest --verbose --runInBand",
+    "start": "SET NODE_ENV=production node dist/index.js",
+    "dev": "SET NODE_ENV=development npm run build && nodemon dist/index.js",
     "serve": "node dist/index.js",
     "lint": "eslint .",
     "prepare": "husky install"
