@@ -7,13 +7,17 @@ const schema = new Schema({
     type: String,
     required: [true, 'Debes ingresar un nombre'],
     minlength: [3, 'El nombre debe contener más de 3 caracteres'],
+    maxlength: [25, 'El nombre debe tener menos de 25 caracteres'],
     trim: true,
+    match: [/^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]+$/, 'Debe ingresar un nombre válido']
   },
   lastName: {
     type: String,
     minlength: [3, 'El apellido debe contener más de 3 caracteres'],
+    maxlength: [25, 'El apellido debe tener menos de 25 caracteres'],
     required: false,
     trim: true,
+    match: [/^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]+$/, 'Debe ingresar un apellido válido']
   },
   email: {
     type: String,
